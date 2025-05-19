@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 
+from src.api import register_blueprints
 from src.config import config
 from src.exceptions import CustomException
 from src.extensions import db, migrate
@@ -26,6 +27,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
+    register_blueprints(app)
     register_error_handlers(app)
 
     return app
