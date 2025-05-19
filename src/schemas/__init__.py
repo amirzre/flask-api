@@ -1,5 +1,6 @@
 from .auth import LoginRequest, LoginResponse
 from .filter import BaseFilterParams
+from .log import CreateLog, LogResponse
 from .pagination import PaginationResponse
 from .user import RegisterUser, UpdateUser, UserFilterParams, UserResponse
 
@@ -12,4 +13,6 @@ __all__ = [
     "UserFilterParams",
     "LoginRequest",
     "LoginResponse",
+    "CreateLog",
+    "LogResponse",
 ]
