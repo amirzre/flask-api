@@ -4,6 +4,7 @@ from src.api import register_blueprints
 from src.config import config
 from src.exceptions import CustomException
 from src.extensions import db, migrate
+from src.logging import register_request_logging
 
 
 def register_error_handlers(app: Flask) -> None:
@@ -29,6 +30,7 @@ def create_app():
 
     register_blueprints(app)
     register_error_handlers(app)
+    register_request_logging(app)
 
     return app
 

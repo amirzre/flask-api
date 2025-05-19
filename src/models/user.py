@@ -1,5 +1,5 @@
 from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.extensions import db
 from src.mixins import IDMixin, TimestampMixin
@@ -13,3 +13,5 @@ class User(db.Model, IDMixin, TimestampMixin):
         String(11), nullable=False, unique=True, index=True
     )
     password: Mapped[str] = mapped_column(String, nullable=False)
+
+    logs = relationship("Log", back_populates="user", cascade="all, delete-orphan")

@@ -10,12 +10,14 @@ from src.schemas import (
     UserFilterParams,
     UserResponse,
 )
+from src.utils import login_required
 
 user_bp = Blueprint("users", __name__)
 user_controller = UserController()
 
 
 @user_bp.route("", methods=["GET"])
+@login_required
 def get_users():
     """
     Get a list of users with filtering and pagination.
@@ -50,6 +52,7 @@ def get_users():
 
 
 @user_bp.route("/<int:user_id>", methods=["GET"])
+@login_required
 def get_user(user_id: int):
     """
     Get a user by ID.
@@ -76,6 +79,7 @@ def register_user():
 
 
 @user_bp.route("/<int:user_id>", methods=["PUT"])
+@login_required
 def update_user(user_id: int):
     """
     Update an existing user.
@@ -92,6 +96,7 @@ def update_user(user_id: int):
 
 
 @user_bp.route("/<int:user_id>", methods=["DELETE"])
+@login_required
 def delete_user(user_id: int):
     """
     Delete a user by ID.
