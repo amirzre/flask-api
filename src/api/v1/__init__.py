@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from src.api.v1 import users
+from src.api.v1 import auth, users
 
 
 def create_v1_blueprint():
@@ -8,5 +8,6 @@ def create_v1_blueprint():
     bp = Blueprint("v1", __name__)
 
     bp.register_blueprint(users.user_bp, url_prefix="/users")
+    bp.register_blueprint(auth.auth_bp, url_prefix="/auth")
 
     return bp
